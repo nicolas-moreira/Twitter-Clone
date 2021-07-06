@@ -9,10 +9,9 @@ app.set('view engine', 'pug');
 app.set('views', 'views');
 
 // Routes
-
 const loginRoute = require('./routes/loginRoutes');
-
 app.use('/login', loginRoute);
+
 
 app.get('/', requireLogin, (req ,res ,next) => {
 
