@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-
+const {requireLogin} = require('./middleware');
 const server = app.listen(port,() => console.log('Server listening on port',port));
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
-app.get('/', (req ,res ,next) => {
+app.get('/', requireLogin, (req ,res ,next) => {
 
     var payload = {
         pageTitle: "Home"
