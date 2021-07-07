@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+//Fix deprecated errors
+mongoose.set('useNewUrlParser', true); 
+mongoose.set('useFindAndModify', false); //  use supported version without warnings
+
+
+
 class Database {
 
     constructor() {
