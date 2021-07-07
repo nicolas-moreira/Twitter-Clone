@@ -8,7 +8,7 @@ const UserSchema = new Schema({
         required: true,
         trim: true
     },
-    lasttName: {
+    lastName: {
         type: String,
         required: true,
         trim: true
@@ -33,7 +33,7 @@ const UserSchema = new Schema({
         type: String,
         default: "images/profilePic.png"
     }
-});
+},{ timestamps: true });
 
 var User = mongoose.model('User', UserSchema);
 
