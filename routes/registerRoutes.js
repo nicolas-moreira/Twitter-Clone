@@ -10,7 +10,7 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false}));
 
-router.get('/', (req ,res ,next) => {
+router.get("/", (req ,res ,next) => {
     res.status(200).render("register");
 })
 
@@ -42,10 +42,14 @@ router.post("/", async (req, res, next) => {
 
             data.password = await bcrypt.hash(password, 10);
 
-            User.create(data).then((user) => {
-                console.log(user);
-            })
-        }else{
+            User.create(data)
+            .then((user) => {
+                req.session.user = user;
+                return res.redirect("/");
+            });
+
+        }
+        else{
             if(email == user.email){
                 payload.errorMessage = "Email already in use.";
             }

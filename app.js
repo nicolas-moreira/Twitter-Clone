@@ -17,9 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
-    secret: "donuts", // Move the secret into a env variable
+    secret: "bbq chips",
     resave: true,
-    saveUninitialized: false // prevent save the session as unitialized
+    saveUninitialized: false
 }));
 
 // Routes
@@ -29,7 +29,7 @@ const registerRoute = require('./routes/registerRoutes');
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 
-app.get('/', requireLogin, (req ,res ,next) => {
+app.get("/", requireLogin, (req ,res ,next) => {
 
     var payload = {
         pageTitle: "Home"
