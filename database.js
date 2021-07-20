@@ -15,10 +15,10 @@ class Database {
     connect(){
         mongoose.connect("mongodb+srv://admin:ola123456@twitterclonecluster.zwwhu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         .then(() => {
-            console.log("Connexion à la base de données réussie");
+            console.log("Connected successfully to the database");
         })
         .catch((err) => {
-        console.log("La connexion à la base de données a échoué", err)
+        console.log("Error while connecting to the database", err)
         }
         );
     }
